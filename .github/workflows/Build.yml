@@ -11,7 +11,7 @@ env:
 
 jobs:
   buildWebGL:
-    needs: testRunner
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     name: Build for WebGL 🖥️
     runs-on: ubuntu-latest
     strategy:
@@ -53,7 +53,7 @@ jobs:
           path: build/WebGL
   
   buildWindows:
-    needs: testRunner
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     name: Build for Windows 🖥️
     runs-on: ubuntu-latest
     strategy:
@@ -95,7 +95,7 @@ jobs:
           path: build/StandaloneWindows64
   
   buildAndroid:
-    needs: testRunner
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     name: Build for Android 📱
     runs-on: ubuntu-latest
     strategy:
