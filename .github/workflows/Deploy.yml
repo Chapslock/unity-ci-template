@@ -7,7 +7,6 @@ env:
 
 jobs:
   deployPages:
-    needs: buildWebGL
     name: Deploy to Github Pages 🚀
     runs-on: ubuntu-latest
     steps:
