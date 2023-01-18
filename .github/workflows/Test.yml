@@ -27,6 +27,8 @@ jobs:
         id: testRunner
         with:
           unityVersion: auto
+          checkName: test results
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
           
       # Results
       - uses: actions/upload-artifact@v2
