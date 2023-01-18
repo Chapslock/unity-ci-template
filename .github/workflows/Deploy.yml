@@ -1,25 +1,58 @@
 name: Deploy 🚀
 
-on: workflow_dispatch
+on:
+  push:
+    tags:
+      - '*'
 
 env:
   UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
 
 jobs:
-  deployPages:
-    name: Deploy to Github Pages 🚀
+  build:
+    name: Build my project
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
 
-      - uses: actions/download-artifact@v2
+      # Checkout
+      - name: Checkout repository
+        uses: actions/checkout@v2
         with:
-          name: build-WebGL
+          lfs: true
+      
+      # Cache
+      - uses: actions/cache@v2
+        with:
+          path: Library
+          key: Library
+
+      # Test
+      - name: Run tests
+        uses: game-ci/unity-test-runner@v2
+        with:
+          unityVersion: 2020.3.15f2
+
+      # Build
+      - name: Build project
+        uses: game-ci/unity-builder@v2
+        with:
+          unityVersion: 2020.3.15f2
+          targetPlatform: StandaloneWindows64
+      
+      # Output 
+      - uses: actions/upload-artifact@v2
+        with:
+          name: Build
           path: build
 
-      - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@4.1.4
+      - name: Zip build
+        run: |
+          pushd build/StandaloneWindows64
+          zip -r ../../StandaloneWindows64.zip .
+          popd
+
+      - name: Release
+        uses: softprops/action-gh-release@v1
         with:
-          branch: gh-pages
-          folder: build/WebGL
+          files: StandaloneWindows64.zip
+          name: Release ${{ github.ref }}
