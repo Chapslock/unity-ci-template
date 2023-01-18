@@ -1,30 +1,28 @@
-using System.Collections;
-using System.Collections.Generic;
 using NUnit.Framework;
-using UnityEditor.Experimental;
-using UnityEngine;
-using UnityEngine.TestTools;
 using static NUnit.Framework.Assert;
 
-public class CounterTest
+namespace Tests.PlayMode.Counter
 {
-    [Test]
-    public void Increment_ShouldPass()
+    public class CounterTest
     {
-        var counter = new Counter(0);
+        [Test]
+        public void Increment_ShouldPass()
+        {
+            var counter = new global::Counter.Counter(0);
             
-        counter.Increment();
+            counter.Increment();
             
-        AreEqual(1, counter.Count);
-    }
+            AreEqual(1, counter.Count);
+        }
 
-    [Test]
-    public void Increment_MaxReached_ShouldNotIncrement()
-    {
-        var counter = new Counter(10);
+        [Test]
+        public void Increment_MaxReached_ShouldNotIncrement()
+        {
+            var counter = new global::Counter.Counter(10);
             
-        counter.Increment();
+            counter.Increment();
         
-        AreEqual(10, counter.Count);
+            AreEqual(10, counter.Count);
+        }
     }
 }

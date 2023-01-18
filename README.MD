@@ -1,5 +1,7 @@
 ﻿## Sample Project for Unity development
 
-### Folders and their meaning
+### Sample EditMode/PlayMode tests implemented
 
-Animations - 
+### Sample Project structure implemented
+
+### Sample Github Actions implemented for continous testing and building
