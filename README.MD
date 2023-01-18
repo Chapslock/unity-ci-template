@@ -5,3 +5,5 @@
 ### Sample Project structure implemented
 
 ### Sample Github Actions implemented for continous testing and building
+
+### Deployment available on tagged commits

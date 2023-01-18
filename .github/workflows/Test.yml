@@ -26,3 +26,9 @@ jobs:
         uses: game-ci/unity-test-runner@v2
         with:
           unityVersion: auto
+          
+      # Results
+      - uses: actions/upload-artifact@v2
+        with:
+          name: Test results
+          path: ${{ steps.testRunner.outputs.artifactsPath }}
