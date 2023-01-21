@@ -6,6 +6,7 @@
 
 ### Sample Github Actions implemented for continous testing and building
 #### To Start using Actions:
+#### NB! These steps should be done only once after forking the repo!
 * Manually run the "Get Unity license activation file"  workflow.
 * Download the manual activation file that now appeared as an artifact and extract the Unity_v20XX.X.XXXX.alf file from the zip.
 * Visit "license.unity3d.com" and upload the Unity_v20XX.X.XXXX.alf file.
