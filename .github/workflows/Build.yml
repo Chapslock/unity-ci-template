@@ -41,8 +41,8 @@ jobs:
           name: Build
           path: build
 
-      - name: Zip build
-        run: |
-          pushd build/StandaloneWindows64
-          zip -r ../../StandaloneWindows64.zip .
-          popd
+#      - name: Zip build
+#       run: |
+#          pushd build/StandaloneWindows64
+#          zip -r ../../StandaloneWindows64.zip .
+#          popd
